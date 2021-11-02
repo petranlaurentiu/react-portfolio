@@ -1,0 +1,14 @@
+@import "./components/intro/Intro";
+@import "./components/about/About";
+@import "./components/productList/ProductList";
+@import "./components/Product/Product";
+@import "./components/contact/Constac";
+
+body {
+  font-family: adobe-caslon-pro, serif;
+  font-weight: 400;
+  font-style: normal;
+
+  margin: 0;
+  padding: 0;
+}
