@@ -1,0 +1,116 @@
+.contact {
+  height: 100vh;
+}
+.contact-bg {
+  width: 20px;
+  height: 100%;
+  background-color: green;
+  position: absolute;
+}
+.contact-wrapper {
+  display: flex;
+  padding: 50px;
+}
+.contact-left {
+  flex: 1;
+}
+.contact-right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.fa-phone-square-alt {
+  display: flex;
+  align-items: center;
+}
+.fa-phone-square-alt::before {
+  font-size: 3rem;
+}
+.fa-envelope:before {
+  font-size: 3rem;
+}
+.fa-envelope {
+  display: flex;
+  align-items: center;
+  word-break: break-all;
+}
+.c-title {
+  font-size: 3rem;
+}
+form {
+  margin-top: 20px;
+}
+input {
+  width: 50%;
+  height: 50px;
+  border: none;
+  border-bottom: 1px solid black;
+  margin: 10px 0;
+  font-size: 1rem;
+  padding-left: 10px;
+}
+textarea {
+  width: 100%;
+  margin: 10px 0;
+  font-size: 1rem;
+  padding-left: 10px;
+}
+.subBtn {
+  border: none;
+  padding: 15px;
+  background-color: green;
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 4px;
+  &:hover {
+    background-color: lighten($color: green, $amount: 10);
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .contact-wrapper {
+    flex-direction: column;
+    padding: 0 50px;
+  }
+  .c-title {
+    font-size: 30px;
+  }
+  .c-info__item {
+    margin: 20px 0;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+  }
+  .fa-envelope {
+    > span {
+      display: none;
+    }
+  }
+  .fa-phone-square-alt {
+    span {
+      display: none;
+    }
+  }
+  .contact-desc {
+    > p {
+      display: none;
+    }
+  }
+  form {
+    margin-top: 0;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  input {
+    width: 35%;
+    height: 40px;
+    margin: 10px;
+    margin-left: 0;
+  }
+  .subBtn {
+    margin-top: 10px;
+  }
+}

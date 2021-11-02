@@ -1,11 +1,34 @@
-import React from "react";
+import React, { useRef, useContext } from "react";
+import { useState } from "react";
+import emailjs from "emailjs-com";
+import { ThemeContext } from "../context";
 
 const Contact = () => {
-  // eslint-disable-next-line no-undef
-  //   const formRef = useRef();
+  const theme = useContext(ThemeContext);
+  const darkMode = theme.state.darkMode;
+  const formRef = useRef();
+  const [done, setDone] = useState(false);
+  //   const theme = useContext(ThemeContext);
+  //   const darkMode = theme.state.darkMode;
 
-  const handleSubmit = (e) => {
+  const sendEmail = (e) => {
     e.preventDefault();
+    emailjs
+      .sendForm(
+        "service_mkkelxn",
+        "template_kg95imv",
+        formRef.current,
+        "user_xgJaz05pwojZbmUOQA7B4"
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+          setDone(true);
+        },
+        (error) => {
+          console.log(error.text);
+        }
+      );
   };
   return (
     <div className="contact">
@@ -15,9 +38,17 @@ const Contact = () => {
           <h1 className="c-title">Let's discuss your project</h1>
           <div className="contact-info">
             <div className="c-info__item">
-              <span>
-                <i class="fas fa-phone-square-alt"></i>
-              </span>
+              <div>
+                <i class="fas fa-phone-square-alt">
+                  {" "}
+                  <span>&nbsp; +40766 647 123</span>{" "}
+                </i>
+              </div>
+              <div>
+                <i class="fas fa-envelope">
+                  <span>&nbsp; petran_laurentiu@yahoo.com</span>
+                </i>
+              </div>
             </div>
           </div>
         </div>
@@ -28,18 +59,35 @@ const Contact = () => {
               numquam impedit facere alias repellendus enim fuga aliquam,
               aperiam id sequi?
             </p>
-            <form onSubmit={handleSubmit}>
-              <input type="text" placeholder="Name" name="user_name" />
-              <input type="text" placeholder="Subject" name="user_subject" />
-              <input type="text" placeholder="Email" name="user_email" />
+            <form ref={formRef} onSubmit={sendEmail}>
+              <input
+                style={{ backgroundColor: darkMode && "#333" }}
+                type="text"
+                placeholder="Name"
+                name="user_name"
+              />
+              <input
+                style={{ backgroundColor: darkMode && "#333" }}
+                type="text"
+                placeholder="Subject"
+                name="user_subject"
+              />
+              <input
+                style={{ backgroundColor: darkMode && "#333" }}
+                type="text"
+                placeholder="Email"
+                name="user_email"
+              />
               <textarea
+                style={{ backgroundColor: darkMode && "#333" }}
                 id=""
                 cols="30"
                 rows="5"
                 placeholder="Message"
                 name="message"
               ></textarea>
-              <button>Submit</button>
+              <button className="subBtn">Submit</button>
+              {done && " Thank you!"}
             </form>
           </div>
         </div>
